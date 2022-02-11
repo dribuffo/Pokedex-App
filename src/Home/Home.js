@@ -9,7 +9,7 @@ function Home() {
       <div>
         <h1>Welcome to the PokeDex!</h1>
         <h3>Click to open!</h3>
-        <Link to='/Pokedex'><img className="homeDex" src={dex} alt="closed pokdex"/></Link>
+        <Link to='/Pokedex/:name'><img className="homeDex" src={dex} alt="closed pokdex"/></Link>
       </div>
     );
 }

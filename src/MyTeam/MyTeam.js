@@ -1,26 +1,22 @@
-import { useEffect, useState } from "react";
 
-const MyTeam = (pokemonImage) => {
-  // console.log(pokemonImage)
-//   const [myTeam, setMyTeam] = useState([]);
+const MyTeam = ({myPokemonTeam, remove}) => {
 
-//   useEffect(() => {
-//     setMyTeam(pokemonImage);
-//   }, []);
 
-//   let roster = myTeam.map((mon, index) => {
-//     return (
-//       <div className="teamMember" key={index}>
-//         <img src={mon.pokemonImage} alt="" />
-//         <button>Remove</button>
-//       </div>
-//     );
-//   });
+
+    let roster = myPokemonTeam.map((pokemon, index) => {
+        return (
+            <div key={index}>
+                <img src={pokemon.image} alt="pokemon image"/>
+                <p>{pokemon.name}</p>
+                <p></p>
+                <button onClick={()=> remove(pokemon)}>Remove</button>
+            </div>
+        )
+    });
 
   return (
     <>
-        <p>hello</p>
-        {/* {roster} */}
+        {roster}
     </>
   )
 };

@@ -3,11 +3,10 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 
 //Components
-import MyTeam from '../MyTeam/MyTeam'
 
-const Pokeview = () => {
+const Pokeview = ({toggle, handleAddPokemonTeam}) => {
   let params = useParams();
-  let pokemonName = params.param.toLowerCase();
+  let pokemonName = params.name.toLowerCase()
 
   const [pokemon, setPokemon] = useState([]);
 
@@ -17,8 +16,7 @@ const Pokeview = () => {
       .then((response) => response.json())
       .then((data) => setPokemon(data))
       .catch(() => console.log("oops, no pokemon found"));
-    console.log(pokemon);
-  }, []);
+  }, [toggle]);
 
   //setting pokemon image equal to a variable so I can pass it later
   let pokemonImage = pokemon?.sprites?.front_default;
@@ -47,7 +45,7 @@ const Pokeview = () => {
       {/* Type */}
       <p>Type: {battleType} </p>
       <p>{/* Japanese name...?*/}</p>
-      <button onClick={() => <MyTeam image={pokemonImage}/>}>Add to Team</button>
+      <button onClick={() => handleAddPokemonTeam(pokemon.name, pokemonImage)}>Add to Team</button>
     </div>
   );
 };

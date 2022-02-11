@@ -3,22 +3,14 @@ import pokeData from '../pokeData.js'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
-
-
-const  Pokedex = () => {
-    // const [pokemon, setPokemon] = useState("bulbasaur")
+const  Pokedex = ({handleAddPokemonTeam}) => {
+    const [toggle, setToggle] = useState(false);
     
-    // function handleSetPokemon(name) {
-    //     setPokemon(name)
-    // }    
-
-
     let pokeList = pokeData.map((mon, index) => {
         return(
             <div className="pokemonName" key={index}>
-                {/* <p onClick={() => handleSetPokemon(mon)}> */}
                 <p>
-                    {mon}
+                    <Link onClick={() => setToggle(!toggle)} to={'/Pokedex/' + mon}>{mon}</Link>
                 </p>
             </div>
         )
@@ -27,8 +19,8 @@ const  Pokedex = () => {
     
     return (
         <>
-            <div className='pokemonList'>{pokeList}</div>
-            {/* {<Pokeview name={setPokemon}/>} */}
+        {<Pokeview toggle={toggle} handleAddPokemonTeam={handleAddPokemonTeam}/>}
+        <div className='pokemonList'>{pokeList}</div>
         </>
     )
 }
